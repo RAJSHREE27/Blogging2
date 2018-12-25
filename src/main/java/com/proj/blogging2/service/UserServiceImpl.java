@@ -21,8 +21,7 @@ public class UserServiceImpl implements UserService{
 	
 	
 	  public User findByEmail(String email){
-		  System.out.println("inside findByEmail in user serviceImpl");
-	        return userRepository.findByEmail(email);
+		    return userRepository.findByEmail(email);
 	    }
 
 	@Override
@@ -43,25 +42,12 @@ public class UserServiceImpl implements UserService{
 		System.out.println("inside save methopd of user-service");
 		User user = new User();
 		user.setFirstName(registration.getFirstName());
-		System.out.println("1@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		
 		user.setLastName(registration.getLastName());
-		System.out.println("2$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
 		user.setGender(registration.getGender());
-		System.out.println("3$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
-		
 		user.setUserName(registration.getUserName());
-		System.out.println("4$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
-		
 		user.setPassword(passwordEncoder.encode(registration.getPassword()));
-		System.out.println("5$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
-		
 		user.setEmail(registration.getEmail());
-		System.out.println("6$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
-		
 		user.setContactNo(registration.getContactNo());
-		System.out.println("7$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
-		
 		
 		return userRepository.save(user);
 		

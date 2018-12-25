@@ -30,8 +30,6 @@ public class UserRegistrationController {
 	
 	@ModelAttribute("user")
 	private UserRegistrationDto userRegistrationDto() {
-		System.out.println("inside user registration dto\n \n");
-		
 		return new UserRegistrationDto();
 	}
 	
@@ -44,7 +42,6 @@ public class UserRegistrationController {
 	public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto, 
             BindingResult result) {
 		
-		System.out.println("inside registerUserAccount");
 		User exist = userService.findByEmail(userDto.getEmail());
 		if (exist != null){
             result.rejectValue("email", null, "There is already an account registered with that email");
@@ -54,8 +51,7 @@ public class UserRegistrationController {
 	          return "registration";
         }
 
-		System.out.println("errorless now going to save method in userService ################");
-	     userService.save(userDto);
+		 userService.save(userDto);
 	     return "redirect:/registration?success";
 	    
 		
