@@ -25,8 +25,8 @@ public class UserServiceImpl implements UserService{
 	    }
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(email);
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		User user = userRepository.findByUserName(userName);
 		if(user == null) {
 			throw new UsernameNotFoundException("Invalid Username or password");
 			
@@ -59,6 +59,13 @@ public class UserServiceImpl implements UserService{
 	                .map(role -> new SimpleGrantedAuthority(role.getName()))
 	                .collect(Collectors.toList());
 	    }*/
+
+	@Override
+	public User findByUserName(String userName) {
+		
+		System.out.print("inside user service implemn@@@@@@@@@@@@@@@@@");
+		 return userRepository.findByUserName(userName);
+	}
 	  
 	  
 

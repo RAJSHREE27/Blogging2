@@ -10,7 +10,7 @@ import com.proj.blogging2.model.User;
 public interface UserService extends UserDetailsService {
 	
 	User findByEmail(String email);
-	
+	User findByUserName(String userName);
 	User save(UserRegistrationDto registration);
 	
 }
