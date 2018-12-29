@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id; 
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -55,7 +56,7 @@ public class User {
 	@NotNull(message = "Please provide your contact number")
 	private long contactNo;
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="UserRole", joinColumns= @JoinColumn(name="user_name") , inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles;
 	
