@@ -1,5 +1,6 @@
 package com.proj.blogging2.repository;
 
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
@@ -11,7 +12,7 @@ public interface UserRepository  extends CrudRepository<User, String> {
 	
 	//fetches data from database by applying queries!
 	
-	User findByUserName(String userName);
+	Optional<User> findByUserName(String userName);
 	User findByEmail(String email);
 	User findByContactNo(long contactNo);
 	User findByRoles(Set<Role> roles);

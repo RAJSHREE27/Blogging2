@@ -6,6 +6,8 @@
 
 package com.proj.blogging2.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class UserRegistrationController {
 	public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto, 
             BindingResult result) {
 		
-		User exist = userService.findByUserName(userDto.getUserName());
+		Optional<User> exist = userService.findByUserName(userDto.getUserName());
 		if (exist != null){
             result.rejectValue("email", null, "There is already an account registered with that email");
         }

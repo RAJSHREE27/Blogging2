@@ -2,6 +2,7 @@ package com.proj.blogging2.model;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -12,11 +13,11 @@ public class UserDetailsImpl implements UserDetails{
 	
 	
 	private static final long serialVersionUID = 1L;
-	private User user;
+	private Optional<User> user;
 	
-	public UserDetailsImpl(User user) {
-		this.user=user;
-		System.out.println("user details impl.");
+	public UserDetailsImpl(Optional<User> user) {
+		this.user=user ;
+		
 	}
 	
 	@Override
@@ -24,8 +25,8 @@ public class UserDetailsImpl implements UserDetails{
 		
 		final Set<GrantedAuthority> grntdAuths = new HashSet<GrantedAuthority>();
 		Set<Role> roles = null;
-		if (user!=null) {
-            roles = user.getRoles();
+		if (user.isPresent()) {
+            roles = user.get().getRoles();
 		}
 		
 		 if (roles!=null) {
@@ -39,15 +40,17 @@ public class UserDetailsImpl implements UserDetails{
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return user.get().getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		if(user==null) {
+		
+		if(user.isPresent()) {
+			return this.user.get().getUserName();
+		}else {
 			return null;
 		}
-		return this.user.getUserName();
 		
 	}
 

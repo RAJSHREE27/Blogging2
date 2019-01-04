@@ -1,5 +1,6 @@
 package com.proj.blogging2.model;
 
+import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id; 
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.Table;
@@ -59,6 +61,10 @@ public class User {
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="UserRole", joinColumns= @JoinColumn(name="user_name") , inverseJoinColumns=@JoinColumn(name="role_id"))
 	private Set<Role> roles;
+	
+	@OneToMany(mappedBy = "user_info")
+	private Collection<Post> posts;
+
 	
 	
 }
