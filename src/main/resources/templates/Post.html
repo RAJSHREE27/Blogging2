@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"   xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+    
+    <title>Post</title>
+</head>
+<body>
+
+	<div th:replace="/fragments/header :: header"></div>
+	
+	<div class="container">
+
+    <!--Post-->
+    <div class="jumbotron">
+
+        <h1 th:text="${post.title}">Title</h1>
+        
+        <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">Created by</div>
+        <div><a th:text="${post.user.userName}" th:href="@{'/blog/' + ${post.user.userName}}">User</a></div>
+        <h3 th:text="${post.body}">Body</h3>
+        
+             <!--Only show these buttons if the user is the owner of post-->
+             
+        <div sec:authorize="isAuthenticated()" th:if="${userName}">
+        
+            <div class="row">
+            
+                <a th:href="@{'/editPost/{id}'(id=${post.id})}" class="col-md-2">
+                    <button type="button" class="btn btn-primary btn-block" th:text="Edit">Edit</button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    
+   </div>
+<!-- /.container -->
+
+<div th:replace="/fragments/footer :: footer"></div>
+
+<script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/bootstrap/bootstrap.min.js}"></script>
+
+
+</body>
+</html>
+        
+	
+	

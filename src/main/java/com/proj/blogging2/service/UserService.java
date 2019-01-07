@@ -3,6 +3,7 @@
 package com.proj.blogging2.service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class UserService {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	
-	  public User findByUserName(String userName){
+	  public Optional<User> findByUserName(String userName){
 		    return userRepository.findByUserName(userName);
 	    }
 

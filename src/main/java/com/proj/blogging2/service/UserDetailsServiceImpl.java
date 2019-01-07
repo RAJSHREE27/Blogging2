@@ -1,4 +1,6 @@
 package com.proj.blogging2.service;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,13 +20,14 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		
-		System.out.println("in loadUserByUserName$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-		User user = userRepository.findByUserName(userName);
-		if(user==null) {
+		Optional<User> user = userRepository.findByUserName(userName);
+		if(user.isPresent()) {
+			return new UserDetailsImpl(user);
+		
+		}else {
+			
 			throw new UsernameNotFoundException(userName);
 		}
-		
-		return new UserDetailsImpl(user);
 	}
 	
 	

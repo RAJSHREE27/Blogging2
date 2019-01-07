@@ -41,6 +41,7 @@ public class Post {
 	
 	@Column(name = "post_body")
 	@Lob
+	@NotEmpty(message = "*Please provide a body")
 	private String body;
 	
 	
