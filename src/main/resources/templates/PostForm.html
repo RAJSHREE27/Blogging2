@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
    
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+     <link rel="stylesheet" type="text/css" th:href="@{/css/head_foot.css}"/>
     
     <title>New Post</title>
 </head>
@@ -20,8 +21,14 @@
 
     <div class="container">
 		
-		<!-- <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}">Post Created Successfully</div>
-		 -->
+		<!--  <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}">Post Created Successfully</div>
+		  -->
+		  
+		  <div th:if="${param.success}">
+                <div class="alert alert-info">
+                    Post created successfully!
+                </div>
+          </div>
 		 
 		<div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -67,8 +74,6 @@
         <!-- ================================================================================ -->
         
         <!--Delete Button-->
-        <!--Dont show delete button if the post is brand new-->
-        
         
          <div class="row" th:if="${post.postId}">
             <div class="col-md-6 col-md-offset-3">

@@ -1,4 +1,4 @@
-/* optional class is used to handle null value exceptions. whenever there is a ull object it gives - empty 
+/* optional class is used to handle null value exceptions. whenever there is a null object it gives - empty 
  * output rather than showing nullpointerexceptions */
 
 /*To avoid the abnormal termination, we use Optional class. 
@@ -72,7 +72,7 @@ public class PostController {
 	            return "/PostForm";
 	        } else {
 	            postService.save(post);
-	            return "redirect:/blog/" + post.getUser().getUserName();
+	            return "redirect:/blog/getpost/"+post.getPostId();
 	        }
 			
 	}
@@ -111,12 +111,12 @@ public class PostController {
 			Post post = opost.get();
 			
 			if(isPrincipalOwnerOfPost(principal,post)) {
+				model.addAttribute("post", post);
 				model.addAttribute("username" , principal.getName());
-				
 				
 			}
 			
-			return "/post";
+			return "/Post";
 			
 		}else {
 			
@@ -139,7 +139,7 @@ public class PostController {
 				
 			}
 			
-			return "/post";
+			return "/Post";
 			
 		}else {
 			
