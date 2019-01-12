@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div class="container">
+
+    <h1 th:if="${errorMessage}" th:utext="${errorMessage}" style="color: #78ab46;">Error java.lang.NullPointerException</h1>
+    <h1 th:if="!${errorMessage}" style="color: #78ab46;">404 - Page does not exist</h1>
+    <a href="index.html" th:href="@{/home}">Back to Home Page</a>
+
+</div>
+
+
+</body>
+</html>

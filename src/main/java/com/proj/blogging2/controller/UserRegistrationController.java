@@ -8,9 +8,15 @@ package com.proj.blogging2.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +35,9 @@ public class UserRegistrationController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	protected AuthenticationManager authenticationManager;
 	
 	@ModelAttribute("user")
 	private UserRegistrationDto userRegistrationDto() {
@@ -54,10 +63,26 @@ public class UserRegistrationController {
         }
 		
 		 userService.save(userDto);
-	     return "redirect:/registration?success";
-	    
-		
+	     return "redirect:/home";
+	   
+	}
 	
+	public void authenticateUserAndSetSession(User user, HttpServletRequest request) {
+		
+		String userName = user.getUserName();
+		String password = user.getPassword();
+		
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
+		
+		// generate session if one doesn't exist
+		request.getSession();
+		token.setDetails(new WebAuthenticationDetails(request));
+		
+		Authentication authenticatedUser = authenticationManager.authenticate(token);
+
+		SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+			
+		
 	}
 	
 	

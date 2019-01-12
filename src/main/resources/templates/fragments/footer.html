@@ -5,19 +5,17 @@
 <body>
 <div th:fragment="footer">
 
-    
-    
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <span sec:authorize="isAuthenticated()">
-                 Logged user: <span sec:authentication="name"></span> |
+                 Logged user: <span sec:authentication="username"></span> |
                   Roles: <span sec:authentication="principal.authorities"></span> |
                 <a th:href="@{/logout}">Sign Out</a>
             </span>
 
                 <div>
-                    <p class="text-center">&copy; 2017 Dusan Reljic</p>
+                    <p class="text-center">&copy; 2019 Rajshree Gavel</p>
                 </div>
 
             </div>

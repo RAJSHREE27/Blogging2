@@ -4,10 +4,11 @@
 </head>
 <body>
 
-<!--
+<div th:replace="/fragments/header :: header"></div>
+
 <div class="container">
 
-     <div class="jumbotron">
+    <div class="jumbotron">
         <h1 th:text="${user.userName} + '\'s Blog'">Username Blog</h1>
     </div>
 
@@ -16,11 +17,11 @@
 
     <div th:replace="/fragments/posts :: posts"></div>
 
-</div>
-/.container
- -->
- 
- <h1>inside Posts.html</h1>
+     <div th:replace="/fragments/pagination :: pagination(URLparameter='/blog/' + ${user.userName})"></div>
 
+</div>
+<!-- /.container -->
+
+<div th:replace="/fragments/footer :: footer"></div>
 </body>
 </html>

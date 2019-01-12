@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+    
+    <title>blogging-home</title>
+</head>
+<body>
+
+<div th:replace="/fragments/header :: header"></div>
+
+<div class="container">
+	<h2>HOME</h2>
+
+      <div th:replace="/fragments/posts :: posts"></div>
+	 
+	
+      <div th:replace="/fragments/pagination :: pagination(URLparameter='/home')"></div>
+
+</div>
+
+<div th:replace="/fragments/footer :: footer"></div>
+
+</body>
+</html>

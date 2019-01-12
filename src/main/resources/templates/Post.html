@@ -11,12 +11,12 @@
 </head>
 <body>
 
-	<!-- <div th:replace="/fragments/header :: header"></div> -->
+	 <div th:replace="/fragments/header :: header"></div>
 	
 	<div class="container">
 	
     <!--Post-->
-    <div class="jumbotron">
+    <div class="jumbotron" >
     	
 
         <h1  th:text="${post.title}">Title</h1>
@@ -42,7 +42,7 @@
    </div>
 <!-- /.container -->
 
-<!-- <div th:replace="/fragments/footer :: footer"></div> -->
+ <div th:replace="/fragments/footer :: footer"></div>
 
 <script type="text/javascript" th:src="@{/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/bootstrap/bootstrap.min.js}"></script>

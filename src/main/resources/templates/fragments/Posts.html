@@ -2,11 +2,11 @@
 <head>
 </head>
 <body>
-<div th:fragment="Posts">
+<div th:fragment="posts">
 
-    <div class="starter-template panel" th:each="post : ${pager.Posts}">
+    <div class="starter-template panel" th:each="post : ${pager.posts}">		<!-- for each loop -->
         <div class="panel-heading">
-            <h1><a th:text="${post.title}" th:href="@{'/post/' + ${post.postId}}">Title</a></h1>
+            <h1><a th:text="${post.title}" th:href="@{'/blog/getpost/' + ${post.postId}}">Title</a></h1>
             <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">
                 Created by
             </div>

@@ -55,6 +55,8 @@ public class PostController {
 	        post.setUser(user.get());
 	        
 	        model.addAttribute("post", post);
+	        model.addAttribute("username" , principal.getName());
+			
 	
 		        return "/PostForm";
 		
@@ -66,18 +68,20 @@ public class PostController {
 
 	//to save new post
 	@RequestMapping(value = "/newpost", method = RequestMethod.POST)
-	public String createNewPost(@Valid Post post, BindingResult bindingResult) {
+	public String createNewPost(@Valid Post post, BindingResult bindingResult, Principal principal, Model model) {
 		
 			if (bindingResult.hasErrors()) {
 	            return "/PostForm";
 	        } else {
 	            postService.save(post);
+	            model.addAttribute("username" , principal.getName());
+				
 	            return "redirect:/blog/getpost/"+post.getPostId();
 	        }
 			
 	}
 	
-	//String bcoz it it returns a url
+	//String bcoz it it returns an url
 	
 	@RequestMapping(value = "/editpost/{id}", method = RequestMethod.GET)
 	public String editWithPostId(@PathVariable long id, Principal principal, Model model) {
@@ -89,6 +93,8 @@ public class PostController {
 			
 			if(isPrincipalOwnerOfPost(principal, post)) {
 				model.addAttribute("post", post);
+				model.addAttribute("username" , principal.getName());
+				
 				return "/PostForm";
 				
 			}else {
@@ -110,13 +116,17 @@ public class PostController {
 		if(opost.isPresent()) {
 			Post post = opost.get();
 			
+			model.addAttribute("post", post);
+			
 			if(isPrincipalOwnerOfPost(principal,post)) {
+				
 				model.addAttribute("post", post);
 				model.addAttribute("username" , principal.getName());
 				
+				
 			}
-			
 			return "/Post";
+			
 			
 		}else {
 			

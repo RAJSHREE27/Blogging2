@@ -1,7 +1,7 @@
 <html  xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <!-- <div th:fragment="header-css">
+    <!-- <div th:fragment="header-css">-->
 
         <title>Spring Boot Blog</title>
 
@@ -15,7 +15,7 @@
         <link rel="stylesheet" th:href="@{/css/head_foot.css}"
               href="../../css/head_foot.css"/>
               
-    </div> -->
+    
 </head>
 <body>
 <div th:fragment="header">
@@ -26,6 +26,7 @@
                 <a class="navbar-brand" th:href="@{/home}">Blog App</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse navbar-right">
+            
                 <!-- show registration only if user is not yet authenticated -->
                 <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
                     <li class="active"><a th:href="@{/registration}">Registration</a></li>
@@ -34,13 +35,15 @@
                 <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
                     <li class="active"><a th:href="@{/login}">Login</a></li>
                 </ul>
-                <!-- show My Blog only if user is authenticated -->
-                <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
+                
+               <!-- show My Blog only if user is authenticated -->
+               <!--  <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
                     <li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
-                </ul>
+                </ul> -->
+                
                 <!-- show new post only if user is authenticated -->
                 <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
-                    <li class="active"><a th:href="@{/newPost}">New Post</a></li>
+                    <li class="active"><a th:href="@{/blog/newpost}">New Post</a></li>
                 </ul>
                 <!-- show sign out only if user is authenticated -->
                 <ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
