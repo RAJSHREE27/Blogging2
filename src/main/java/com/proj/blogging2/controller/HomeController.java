@@ -26,10 +26,13 @@ public class HomeController {
 			
 		Page<Post> posts = postService.findAllOrderedByDatePageable(page);
 		
-		Pager pager =new Pager(posts);
-		
+		for(Post p : posts) {
+			String s = p.getBody();
+			p.setBody(s.substring(0, 20));
+			//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+		}
+		Pager pager = new Pager(posts);
 		model.addAttribute("pager", pager);
-		
 		return "/home";
 		
 		

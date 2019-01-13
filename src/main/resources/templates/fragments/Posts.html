@@ -10,7 +10,7 @@
             <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">
                 Created by
             </div>
-            <div><a th:text="${post.user.userName}" th:href="@{'/blog/' + ${post.user.userName}}">User</a>
+            <div><a th:text="${post.user.userName}" th:href="@{'/userblogs/' + ${post.user.userName}}">User</a>
             </div>
         </div>
         <h3 class="panel-body" th:text="${post.body}">Body</h3>

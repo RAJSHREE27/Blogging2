@@ -37,7 +37,7 @@ public class PostServiceImpl implements PostService {
 	    }
 	    
 	    @Override
-	    public Page<Post> findByUserOrderedByDatePageable(User user, int page) {
+	    public Page<Post> findByUserOrderedByDatePageable(Optional<User> user, int page) {
 	        return postRepository.findByUserOrderByCreateDateDesc(user, PageRequest.of(subtractPageByOne(page), 5));
 	    }
 

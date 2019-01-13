@@ -13,11 +13,12 @@ public interface PostService  {
     Post save(Post post);
     void delete(Post post);
     
-    // all posts of a user ordered by date
+   /* // all posts of a user ordered by date
     Page<Post> findByUserOrderedByDatePageable(User user, int page);
     
-    // all posts  ordered by date
+   */ // all posts  ordered by date
     Page<Post> findAllOrderedByDatePageable(int page);
+	Page<Post> findByUserOrderedByDatePageable(Optional<User> user, int page);
 
 	
 }

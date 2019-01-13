@@ -1,5 +1,7 @@
 package com.proj.blogging2.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +18,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 	Post saveAndFlush(Post post);
 	void delete(Post post);
 	
-	 Page<Post> findByUserOrderByCreateDateDesc(User user, Pageable pageable);
+	 Page<Post> findByUserOrderByCreateDateDesc(Optional<User> user, Pageable pageable);
 	 Page<Post> findAllByOrderByCreateDateDesc(Pageable pageable);
 
 	
