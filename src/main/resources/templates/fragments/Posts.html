@@ -3,10 +3,10 @@
 </head>
 <body>
 <div th:fragment="posts">
-
+	<div class="jumbotron">
     <div class="starter-template panel" th:each="post : ${pager.posts}">		<!-- for each loop -->
         <div class="panel-heading">
-            <h1><a th:text="${post.title}" th:href="@{'/blog/getpost/' + ${post.postId}}">Title</a></h1>
+            <h2><a th:text="${post.title}" th:href="@{'/blog/getpost/' + ${post.postId}}">Title</a></h2>
             <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">
                 Created by
             </div>
@@ -14,9 +14,11 @@
             </div>
         </div>
         <h3 class="panel-body" th:text="${post.body}">Body</h3>
+        <h4><a th:text=".....more" th:href="@{'/blog/getpost/' + ${post.postId}}">.....more</a></h4>
         <br></br>
     </div>
 
+</div>
 </div>
 </body>
 </html>

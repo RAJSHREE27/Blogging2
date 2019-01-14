@@ -28,17 +28,21 @@
             <div id="navbar" class="collapse navbar-collapse navbar-right">
             
                 <!-- show registration only if user is not yet authenticated -->
-                <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
+                <!-- <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
                     <li class="active"><a th:href="@{/registration}">Registration</a></li>
                 </ul>
-                <!-- show login only if user is not yet authenticated -->
+                show login only if user is not yet authenticated
                 <ul class="nav navbar-nav" sec:authorize="!isAuthenticated()">
                     <li class="active"><a th:href="@{/login}">Login</a></li>
-                </ul>
+                </ul> -->
                 
                <!-- show My Blog only if user is authenticated -->
                <!--  <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
                     <li class="active"><a th:href="@{'/blog/' + ${#authentication.getName()}}">My Blog</a></li>
+                </ul> -->
+                
+                <!-- <ul class="nav navbar-nav" sec:authorize="hasRole('USER')">
+                	<li class="active"><a th:text="${post.user.userName}" th:href="@{'/userblogs/' + ${post.user.userName}}">username</a></li>
                 </ul> -->
                 
                 <!-- show new post only if user is authenticated -->

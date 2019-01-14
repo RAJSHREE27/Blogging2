@@ -28,8 +28,10 @@ public class HomeController {
 		
 		for(Post p : posts) {
 			String s = p.getBody();
-			p.setBody(s.substring(0, 20));
-			//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+			if(s.length()>20) {
+				p.setBody(s.substring(0, 20));
+			}
+			
 		}
 		Pager pager = new Pager(posts);
 		model.addAttribute("pager", pager);

@@ -19,7 +19,7 @@
     <div class="jumbotron" >
     	
 
-        <h1  th:text="${post.title}">Title</h1>
+        <h2  th:text="${post.title}">Title</h2>
         
         <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')} + ' by '">Created by</div>
         <div><a th:text="${post.user.userName}" th:href="@{'/blog/' + ${post.user.userName}}">User</a></div>
