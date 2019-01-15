@@ -11,7 +11,7 @@
     <title>New Post</title>
 </head>
 
-<body>
+<body style="background-color:#ff6666">
 
  
 <div th:replace="/fragments/header :: header"></div>
@@ -44,7 +44,7 @@
 		                        <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
 		                               class="alert alert-danger"></label>
 		                        <input type="text" th:field="*{title}" placeholder="Title"
-		                               class="form-control input-lg"/>
+		                               class="form-control input-lg" style="background-color:#ffe6e6"/>
 		                  </div>
 		     
 		     <!-- ------------------------------------------------------------------------------- -->  
@@ -52,8 +52,8 @@
 		               	<div class="form-group">
 		                        <label th:if="${#fields.hasErrors('body')}" th:errors="*{body}"
 		                               class="alert alert-danger"></label>
-		                        <textarea th:field="*{body}" placeholder="Body"
-		                                  class="form-control input-lg"></textarea>
+		                        <textarea rows="15" th:field="*{body}" placeholder="Body"
+		                                  class="form-control input-lg" style="background-color:#ffe6e6"></textarea>
 		                </div>             
 		                  
 			<!-- ------------------------------------------------------------------------------- -->  
@@ -81,7 +81,7 @@
                       class="form-horizontal">
                     <div class="form-group">
                         <input type="hidden" name="_method" value="delete"/>
-                        <button type="submit" class="btn btn-danger btn-block" th:text="Delete">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-block" th:text="Delete" style="background-color:#ff0000">Delete</button>
                     </div>
                 </form>
             </div>

@@ -3,7 +3,7 @@
 </head>
 <body>
 <div th:fragment="posts">
-	<div class="jumbotron">
+	<div class="jumbotron" style="background-color:#ffe6e6">
     <div class="starter-template panel" th:each="post : ${pager.posts}">		<!-- for each loop -->
         <div class="panel-heading">
             <h2><a th:text="${post.title}" th:href="@{'/blog/getpost/' + ${post.postId}}">Title</a></h2>
