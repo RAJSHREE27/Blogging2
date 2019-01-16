@@ -83,4 +83,9 @@ public class CommentController {
 		
 	}
 	
+	//if we click on comment button then we can see all the comments related to the post id order by create-date
+	
+	
+	
+	
 }

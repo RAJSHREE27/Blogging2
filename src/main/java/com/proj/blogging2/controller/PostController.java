@@ -11,6 +11,7 @@ we are using Optional So that our program can execute without crashing.
 package com.proj.blogging2.controller;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -23,9 +24,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.proj.blogging2.model.Comment;
 import com.proj.blogging2.model.Post;
 import com.proj.blogging2.model.User;
+import com.proj.blogging2.service.CommentService;
 import com.proj.blogging2.service.PostService;
 import com.proj.blogging2.service.UserService;
 
@@ -36,11 +38,13 @@ public class PostController {
 	
 	private PostService postService;
 	private UserService userService;
+	private CommentService commentService;
 	
 	@Autowired
-	public PostController(PostService postService, UserService userService ) {
+	public PostController(PostService postService, UserService userService, CommentService commentService ) {
 		this.postService = postService;
 		this.userService = userService;
+		this.commentService = commentService;
 		
 	}
 	
@@ -123,8 +127,11 @@ public class PostController {
 				model.addAttribute("post", post);
 				model.addAttribute("username" , principal.getName());
 				
-				
 			}
+			
+			List<Comment> allComments = commentService.findAllCommentsForAPost(post.getPostId());
+			model.addAttribute("allComments",allComments);
+			
 			return "/Post";
 			
 			

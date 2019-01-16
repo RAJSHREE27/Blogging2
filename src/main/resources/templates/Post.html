@@ -27,18 +27,45 @@
         
             <!--  Only show these buttons if the user is the owner of post -->
              
-        <div sec:authorize="isAuthenticated()" th:if="${username}">
+     <br><br>
         
             <div class="row">
-            
-                <a th:href="@{'/blog/editpost/{id}'(id=${post.postId})}" class="col-md-2">
-                    <button type="button" class="btn btn-primary btn-block" th:text="Edit">Edit</button>
-                </a>
-
-            </div>
-        </div> 
-    </div>
+               <div sec:authorize="isAuthenticated()" th:if="${username}">
+	            	<div class="col-lg-3">
+	            
+		                <a th:href="@{'/blog/editpost/{id}'(id=${post.postId})}">
+		                    <button type="button" class="btn btn-primary btn-block" th:text="Edit">Edit</button>
+		                </a>
+	                </div>
+	                
+	                 <div class="col-lg-6">
+	                </div>
+                </div>
+              
+                <div class="col-lg-3">
+           		    <a th:href="@{'/comment/commentpost/{id}'(id=${post.postId})}">
+	                    <button type="button" class="btn btn-primary btn-block" th:text="Comment">Comment</button>
+	                </a>
+                </div>
+             </div>
+  
+   </div>
+   
     
+    <!-- comments -> show comments only if they are present -->
+	    <div th:if="${not #lists.isEmpty(allComments)}">
+	    <div class="container">
+	    	<div class="jumbotron" style="background-color:#ffe6e6">
+	    
+		    
+		    	<h3>Comments</h3>
+		    	
+		    		<div th:replace="/fragments/commentsList :: commentsList"></div>
+		    	
+		    </div>
+	    </div>
+	    
+	   </div>
    </div>
 <!-- /.container -->
 
