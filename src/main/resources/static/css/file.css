@@ -1,0 +1,14 @@
+
+body{
+	background-image: url("/images/a1.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center center
+	
+}
+
+.jumbotron .blog_heading{
+	
+	opacity:0.2;
+	
+}

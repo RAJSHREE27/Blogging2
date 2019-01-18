@@ -7,16 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/file.css}">
 	
 </head>
-<body style="background-color:#ff6666">
+<body>
 
 <div th:replace="/fragments/header :: header"></div>
 
 <div class="container">
 	
    <div class="jumbotron">
-        <h1 th:text="${user.userName} + '\'s Blog'">Username Blog</h1>
+		<h2 th:text="${user.firstName}+' '+${user.lastName}">Name</h2>
+        <h4 th:text="'- ' + ${user.userName}">username</h4>
+		<h4 th:text="'- email : '+ ${user.email}">email</h4>
+		<h4 th:text="'- contact : '+${user.contactNo}"></h4>
+	</div> 
+	
+   <div class="jumbotron" style="padding:4px;opacity:0.4;" >
+        <h4 style="text-align:center;"><strong>BLOGS</strong></h4>
+       
     </div>
    
     <div th:replace="/fragments/user_posts :: user_posts"></div>

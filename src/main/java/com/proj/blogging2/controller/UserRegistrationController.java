@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.proj.blogging2.dto.UserRegistrationDto;
 import com.proj.blogging2.model.User;
 import com.proj.blogging2.service.UserService;
+import com.proj.blogging2.utils.SendOtp;
 
 @Controller
 @RequestMapping("/registration")
@@ -35,6 +36,7 @@ public class UserRegistrationController {
 	
 	@Autowired
 	private UserService userService;
+	
 	
 	@Autowired
 	protected AuthenticationManager authenticationManager;
@@ -61,8 +63,18 @@ public class UserRegistrationController {
 		if (result.hasErrors()){
 	          return "registration";
         }
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$");
+		System.out.println(userDto.getContactNo());
 		
-		 userService.save(userDto);
+		SendOtp otpSend = new SendOtp();
+		
+		otpSend.sendOtp(Long.toString(userDto.getContactNo()));
+		System.out.println(Long.toString(userDto.getContactNo()));
+		
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		
+		// userService.save(userDto);
+		 
 	     return "redirect:/home";
 	   
 	}

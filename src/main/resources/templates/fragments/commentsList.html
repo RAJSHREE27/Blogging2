@@ -5,7 +5,7 @@
 <body>
 <div th:fragment="commentsList">
 	
-	 <div class="jumbotron" style="background-color:#ffe6e6">
+	 
 		<div class="starter-template panel"  th:each="comment : ${allComments}">		<!-- for each loop -->
 		
 			<div class="panel-heading">
@@ -19,11 +19,8 @@
 		     <div class="jumbotron" style="padding:5px;">
 		     	<h5 class="panel-body" th:text="${comment.body}">Body</h5>
 		     </div>
-		     
-	    </div>
 	
-	
-</div>
+		</div>
 </div>
 
 </body>
