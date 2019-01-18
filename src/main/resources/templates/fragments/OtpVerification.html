@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}"/>
+    
+     <title>Verify</title>
+     
+</head>
+<body>
+
+<div class="container">
+
+	<div class="row">
+
+	<div class="col-md-6 col-md-offset-3">
+
+			<h1>One Time Password Verification</h1>
+
+				<form th:action="@{/otp/recieveotp}" autocomplete="off" method="post">
+				
+				 <h2 class="text-center">Write new post</h2>
+						
+				 <div class="form-group">
+				 	 <input type="text" th:field="${otp}" placeholder="enter OTP"
+		                               class="form-control input-lg" />
+				</div>
+				
+				<div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block" value="Verify"/>
+                </div>
+                
+			</form>
+		</div>
+
+	</div>
+	<!-- row -->
+</div>
+<!-- container -->

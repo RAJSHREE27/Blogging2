@@ -38,8 +38,6 @@
                       role="form">
                       
                       <h2 class="text-center">Write new post</h2>
-               
-               <!-- ------------------------------------------------------------------------------- -->  
                     
                           <div class="form-group">
 		                        <label th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
@@ -48,17 +46,13 @@
 		                               class="form-control input-lg" style="background-color:#ffe6e6"/>
 		                  </div>
 		     
-		     <!-- ------------------------------------------------------------------------------- -->  
-               	
 		               	<div class="form-group">
 		                        <label th:if="${#fields.hasErrors('body')}" th:errors="*{body}"
 		                               class="alert alert-danger"></label>
 		                        <textarea rows="15" th:field="*{body}" placeholder="Body"
 		                                  class="form-control input-lg" style="background-color:#ffe6e6"></textarea>
 		                </div>             
-		                  
-			<!-- ------------------------------------------------------------------------------- -->  
-             	
+		     	
              	 <input type="hidden" th:field="*{user}"/>
              	 
                     <input type="hidden" th:field="*{postId}"/>
